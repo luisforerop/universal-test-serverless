@@ -2,6 +2,8 @@ import type { AWS } from '@serverless/typescript'
 
 import hello from '@functions/hello'
 import addQuestion from '@functions/addQuestion'
+import getQuestions from '@functions/getQuestions'
+import getResults from '@functions/getResults'
 
 const serverlessConfiguration: AWS = {
   service: 'universal-test-serverless',
@@ -40,7 +42,12 @@ const serverlessConfiguration: AWS = {
       },
     },
   },
-  functions: { hello, addQuestion },
+  functions: {
+    hello,
+    addQuestion,
+    getQuestions,
+    getResults,
+  },
   package: { individually: true },
   custom: {
     esbuild: {
