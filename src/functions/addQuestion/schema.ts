@@ -9,6 +9,7 @@ export default {
         type: 'object',
         properties: {
           answer: { type: 'string' },
+          description: { type: 'string' },
           isCorrect: { type: 'boolean' },
         },
       },

@@ -14,13 +14,13 @@ const addQuestion: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
   const answersToSave = []
   let correctAnswerId = ''
 
-  for (const { answer, isCorrect } of answers) {
+  for (const { answer, isCorrect, description } of answers) {
     const id = v4()
     if (isCorrect) {
       correctAnswerId = id
     }
     answersToSave.push({
-      answer,
+      answer: answer ?? description,
       id,
     })
   }
@@ -51,7 +51,7 @@ const addQuestion: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (
   return formatJSONResponse({
     message: 'The question was added',
     statusCode: 200,
-    question: JSON.stringify(questionToSave),
+    question: questionToSave,
   })
 }
 
